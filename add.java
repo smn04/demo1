@@ -4,7 +4,7 @@ import java.util.List;
 public class add {
     public static void main(String[] args) {
         // Initialize the list of numbers
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4,5,6);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4,5);
 
         // Variable to store the sum
         int sum = 0;
