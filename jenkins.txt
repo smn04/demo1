@@ -1,24 +1,36 @@
 pipeline {
-  agent any
-  stages {
-    stage('version') {
-      steps {
-	echo 'Stage Version'
-        
-      }
+    agent any
+    stages {
+        stage('Version') {
+            steps {
+                echo 'Checking Java Version...'
+                bat 'java -version'
+                bat 'javac -version'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                script {
+                    if (fileExists('add.java')) {
+                        bat 'javac add.java'
+                    } else {
+                        error 'add.java file is missing in the workspace!'
+                    }
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                script {
+                    if (fileExists('add.class')) {
+                        bat 'java add'
+                    } else {
+                        error 'add.class not found! Ensure the build stage compiled successfully.'
+                    }
+                }
+            }
+        }
     }
-    stage('build') {
-      steps {
-	echo 'building....'
-        sh 'javac add.java'
-	sh 'java add'
-      }
-    }
-    stage('test') {
-      steps{
-echo 'testing...'
-        sh 'javac add.java'
-	sh 'java add'
-}}
-  }
 }
