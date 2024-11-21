@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+  stages {
+    stage('version') {
+      steps {
+	echo 'Stage Version'
+        
+      }
+    }
+    stage('build') {
+      steps {
+	echo 'building....'
+        sh 'javac add.java'
+	sh 'java add'
+      }
+    }
+    stage('test') {
+      steps{
+echo 'testing...'
+        sh 'javac add.java'
+	sh 'java add'
+}}
+  }
+}
