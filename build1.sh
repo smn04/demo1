@@ -21,8 +21,8 @@ javac "$JAVA_FILE1"
 
 # Step 3: Run the compiled Java class
 echo "Running the compiled Java class..."
-java "$CLASS_FILE"
-java "$CLASS_FILE1"
+java Add1
+java TestAdd
 
 # Step 4: Cleanup (optional)
 # rm -f "$CLASS_FILE"
